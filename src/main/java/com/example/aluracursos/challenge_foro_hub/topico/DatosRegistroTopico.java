@@ -1,11 +1,16 @@
 package com.example.aluracursos.challenge_foro_hub.topico;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public record DatosRegistroTopico(
-        @NotBlank
+
         String idUsuario,
+        @NotBlank
+        String nombre,
+        @NotBlank
+        @Email
+        String correo,
         @NotBlank
         String titulo,
         @NotBlank
