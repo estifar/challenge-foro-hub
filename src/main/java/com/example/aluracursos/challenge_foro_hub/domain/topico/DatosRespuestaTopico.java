@@ -1,4 +1,4 @@
-package com.example.aluracursos.challenge_foro_hub.topico;
+package com.example.aluracursos.challenge_foro_hub.domain.topico;
 
 public class DatosRespuestaTopico {
     private Long idUsuario;
