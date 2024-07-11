@@ -2,6 +2,7 @@ package com.example.aluracursos.challenge_foro_hub.controller;
 
 
 import com.example.aluracursos.challenge_foro_hub.topico.*;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -66,13 +67,17 @@ public class TopicosController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DatosRespuestaTopico> retornaDatosTopico(@PathVariable Long id) {
-        Topico topico = topicoRepository.getReferenceById(id);
-        var datosTopicos = new DatosRespuestaTopico(
-                topico.getIdUsuario(),
-                topico.getNombre(),
-                topico.getCorreo(),
-                topico.getTitulo(),
-                topico.getMensaje());
-        return ResponseEntity.ok(datosTopicos);
+        try {
+            Topico topico = topicoRepository.getReferenceById(id);
+            var datosTopicos = new DatosRespuestaTopico(
+                    topico.getIdUsuario(),
+                    topico.getNombre(),
+                    topico.getCorreo(),
+                    topico.getTitulo(),
+                    topico.getMensaje());
+            return ResponseEntity.ok(datosTopicos);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
