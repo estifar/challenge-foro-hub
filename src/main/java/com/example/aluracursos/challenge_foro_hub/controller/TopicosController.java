@@ -2,7 +2,6 @@ package com.example.aluracursos.challenge_foro_hub.controller;
 
 
 import com.example.aluracursos.challenge_foro_hub.domain.topico.*;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
